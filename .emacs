@@ -7,6 +7,11 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/cedet-1.0.1/common")
 (add-to-list 'load-path "~/.emacs.d/plugins/color-theme-6.6.0")
 (add-to-list 'load-path "~/.emacs.d/plugins/tabbar-1.3")
+(add-to-list 'load-path "~/.emacs.d/plugins/ibus-el-0.3.2")
+
+;;set ibus-el
+(require 'ibus)
+(add-hook 'after-init-hook 'ibus-mode-on)
 
 ;字体设置
 (require 'font-settings)
@@ -19,6 +24,7 @@
 
 ;自定义按键
 (require 'customize-keymap)
+(global-set-key [?\S- ] 'set-mark-command)
 
 ;普通设置
 (setq inhibit-startup-message t);关闭起动时闪屏
@@ -231,7 +237,7 @@
   (setq tab-width 4 indent-tabs-mode nil)
   (setq c-basic-offset 4)
   ;;(define-key c++-mode-map [f3] 'replace-regexp)
-  (c-set-style "stroustrup"))
+  (c-set-style "k&r"))
 (add-hook 'c++-mode-hook 'my-c++-mode-hook)
 
 
@@ -298,3 +304,4 @@
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on t)
 (global-set-key (kbd "C-c z") 'shell)
 (global-set-key (kbd "<f10>") 'rename-buffer)
+
