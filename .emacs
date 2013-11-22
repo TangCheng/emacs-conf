@@ -3,15 +3,16 @@
 (add-to-list 'load-path "~/.emacs.d/plugins")
 (add-to-list 'load-path "~/.emacs.d/plugins/ecb-2.40")
 (add-to-list 'load-path "~/.emacs.d/plugins/cscope-15.8a")
-(add-to-list 'load-path "~/.emacs.d/plugins/cedet-1.0.1")
-(add-to-list 'load-path "~/.emacs.d/plugins/cedet-1.0.1/common")
+(load-file "/usr/share/emacs/site-lisp/xcscope.el")
+(add-to-list 'load-path "~/.emacs.d/plugins/cedet-1.1")
+(add-to-list 'load-path "~/.emacs.d/plugins/cedet-1.1/common")
 (add-to-list 'load-path "~/.emacs.d/plugins/color-theme-6.6.0")
 (add-to-list 'load-path "~/.emacs.d/plugins/tabbar-1.3")
-(add-to-list 'load-path "~/.emacs.d/plugins/ibus-el-0.3.2")
+;;(add-to-list 'load-path "~/.emacs.d/plugins/ibus-el-0.3.2")
 
 ;;set ibus-el
-(require 'ibus)
-(add-hook 'after-init-hook 'ibus-mode-on)
+;;(require 'ibus)
+;;(add-hook 'after-init-hook 'ibus-mode-on)
 
 ;字体设置
 (require 'font-settings)
@@ -81,33 +82,42 @@
 
 
 ;全屏
-(defun my-fullscreen ()
-  (interactive)
-  (x-send-client-message
-   nil 0 nil "_NET_WM_STATE" 32
-   '(2 "_NET_WM_STATE_FULLSCREEN" 0)))
+;;(defun my-fullscreen ()
+;;  (interactive)
+;;  (x-send-client-message
+;;   nil 0 nil "_NET_WM_STATE" 32
+;;   '(2 "_NET_WM_STATE_FULLSCREEN" 0)))
 
 ;最大化
-(defun my-maximized-horz ()
-  (interactive)
-  (x-send-client-message
-   nil 0 nil "_NET_WM_STATE" 32
-   '(1 "_NET_WM_STATE_MAXIMIZED_HORZ" 0)))
-(defun my-maximized-vert ()
-  (interactive)
-  (x-send-client-message
-   nil 0 nil "_NET_WM_STATE" 32
-   '(1 "_NET_WM_STATE_MAXIMIZED_VERT" 0)))
-(defun my-maximized ()
-  (interactive)
-  (x-send-client-message
-   nil 0 nil "_NET_WM_STATE" 32
-   '(1 "_NET_WM_STATE_MAXIMIZED_HORZ" 0))
-  (interactive)
-  (x-send-client-message
-   nil 0 nil "_NET_WM_STATE" 32
-   '(1 "_NET_WM_STATE_MAXIMIZED_VERT" 0)))
-(my-maximized)
+;;(defun my-maximized-horz ()
+;;  (interactive)
+;;  (x-send-client-message
+;;   nil 0 nil "_NET_WM_STATE" 32
+;;   '(1 "_NET_WM_STATE_MAXIMIZED_HORZ" 0)))
+;;(defun my-maximized-vert ()
+;;  (interactive)
+;;  (x-send-client-message
+;;   nil 0 nil "_NET_WM_STATE" 32
+;;   '(1 "_NET_WM_STATE_MAXIMIZED_VERT" 0)))
+;;(defun my-maximized ()
+;;  (interactive)
+;;  (x-send-client-message
+;;   nil 0 nil "_NET_WM_STATE" 32
+;;   '(1 "_NET_WM_STATE_MAXIMIZED_HORZ" 0))
+;;  (interactive)
+;;  (x-send-client-message
+;;   nil 0 nil "_NET_WM_STATE" 32
+;;   '(1 "_NET_WM_STATE_MAXIMIZED_VERT" 0)))
+;;(my-maximized)
+;;; Nice size for the default window
+(defun get-default-height ()
+       (/ (- (display-pixel-height) 120)
+          (frame-char-height)))
+(defun get-default-width ()
+       (/ (display-pixel-width)
+          (frame-char-width)))
+(add-to-list 'default-frame-alist (cons 'width (get-default-width)))
+(add-to-list 'default-frame-alist (cons 'height (get-default-height)))
 
 
 ;加入会话功能
@@ -145,7 +155,7 @@
 ;; 设置左边按钮外观：外框框边大小和颜色  
 (set-face-attribute 'tabbar-button-face nil  
                     :inherit 'tabbar-default  
-                    :box '(:line-width 1 :color "yellow70")  
+                    :box '(:line-width 1 :color "yellow")  
                     )  
 ;; 设置当前tab外观：颜色，字体，外框大小和颜色  
 (set-face-attribute 'tabbar-selected-face nil  
@@ -271,6 +281,7 @@
 (require 'ecb)
 ;ecb设置
 (require 'ecb-autoloads)
+(setq stack-trace-on-error t)
 (setq ecb-auto-activate t
       ecb-tip-of-the-day nil
       inhibit-startup-message t
