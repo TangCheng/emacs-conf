@@ -111,10 +111,10 @@
 ;;(my-maximized)
 ;;; Nice size for the default window
 (defun get-default-height ()
-       (/ (- (display-pixel-height) 120)
+       (/ (- (display-pixel-height) 50)
           (frame-char-height)))
 (defun get-default-width ()
-       (/ (display-pixel-width)
+       (/ (- (display-pixel-width) 35)
           (frame-char-width)))
 (add-to-list 'default-frame-alist (cons 'width (get-default-width)))
 (add-to-list 'default-frame-alist (cons 'height (get-default-height)))
