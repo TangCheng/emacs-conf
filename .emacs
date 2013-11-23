@@ -8,6 +8,7 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/color-theme-6.6.0")
 (add-to-list 'load-path "~/.emacs.d/plugins/tabbar-1.3")
 (add-to-list 'load-path "~/.emacs.d/plugins/ibus-el-0.3.2")
+(add-to-list 'load-path "~/.emacs.d/plugins/auto-complete-1.3.1")
 
 ;;set ibus-el
 (require 'ibus)
@@ -305,3 +306,5 @@
 (global-set-key (kbd "C-c z") 'shell)
 (global-set-key (kbd "<f10>") 'rename-buffer)
 
+;auto-complete
+(require 'auto-complete-settings)
