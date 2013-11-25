@@ -10,6 +10,8 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/ibus-el-0.3.2")
 (add-to-list 'load-path "~/.emacs.d/plugins/auto-complete-1.3.1")
 
+(global-hl-line-mode 1)
+
 ;;set ibus-el
 (require 'ibus)
 (add-hook 'after-init-hook 'ibus-mode-on)
