@@ -3,14 +3,15 @@
 (add-to-list 'load-path "~/.emacs.d/plugins")
 (add-to-list 'load-path "~/.emacs.d/plugins/ecb-2.40")
 (add-to-list 'load-path "~/.emacs.d/plugins/cscope-15.8a")
-(add-to-list 'load-path "~/.emacs.d/plugins/cedet-1.0.1")
-(add-to-list 'load-path "~/.emacs.d/plugins/cedet-1.0.1/common")
+(add-to-list 'load-path "~/.emacs.d/plugins/cedet-1.1")
+(add-to-list 'load-path "~/.emacs.d/plugins/cedet-1.1/common")
 (add-to-list 'load-path "~/.emacs.d/plugins/color-theme-6.6.0")
 (add-to-list 'load-path "~/.emacs.d/plugins/tabbar-1.3")
 (add-to-list 'load-path "~/.emacs.d/plugins/ibus-el-0.3.2")
 (add-to-list 'load-path "~/.emacs.d/plugins/auto-complete-1.3.1")
 
 (global-hl-line-mode 1)
+(setq stack-trace-on-error t)
 
 ;;set ibus-el
 (require 'ibus)
